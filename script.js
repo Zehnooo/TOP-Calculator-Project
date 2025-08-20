@@ -27,7 +27,7 @@ function operate(x, y, op) {
 
 function useButton(btn) {
   value = btn.textContent;
-  btn.id ? alert(btn.id) : alert("no button Id set" + value);
+  btn.id ? alert(btn.id) : alert("no button Id set" + " " + value);
 }
 
 const buttonContainer = document.querySelector(".calc-buttons");
