@@ -20,4 +20,7 @@ const operations = {
   },
 };
 
-function operate(x, y, op) {}
+function operate(x, y, op) {
+  let operation = operations[op];
+  return operation(x, y);
+}
