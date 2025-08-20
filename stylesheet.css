@@ -41,3 +41,32 @@ img {
   --color-accent: #ffc300;
   --color-highlight: #ffd60a;
 }
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.calc-outer,
+.calc-inner,
+.calc-header,
+.calc-display {
+  display: flex;
+  width: 100%;
+}
+
+.calc-outer {
+  background-color: var(--color-background);
+  height: 800px;
+}
+
+.calc-buttons {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+}
+.calc-buttons button {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
