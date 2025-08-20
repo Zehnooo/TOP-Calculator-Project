@@ -33,3 +33,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+:root {
+  --color-background: #000814;
+  --color-surface: #001d3d;
+  --color-primary: #003566;
+  --color-accent: #ffc300;
+  --color-highlight: #ffd60a;
+}
