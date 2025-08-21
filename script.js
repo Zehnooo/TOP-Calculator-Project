@@ -50,16 +50,15 @@ function useButton(btn) {
         case "clear":
           clearCalc();
           break;
+
+        case "operate":
+          getNum();
+          break;
       }
     }
     if (validOperators.includes(id)) {
       operator = id;
-
-      switch (id) {
-        case "add":
-          getNum(id);
-          break;
-      }
+      getNum();
     }
   }
 }
@@ -72,22 +71,26 @@ function clearCalc() {
   operator = null;
 }
 
-function getNum(id) {
-  if (!numX) {
+function getNum() {
+  if (numX === null) {
     numX = Number(calcDisplay.textContent);
     calcSavedNum.textContent = numX;
     calcDisplay.textContent = "";
-    return numX;
-  } else if (numX && !numY) {
+    return;
+  }
+
+  if (calcDisplay.textContent !== "" && operator) {
     numY = Number(calcDisplay.textContent);
-    return numY;
-  } else {
-    // if numX and numY exist
-    let total = operate(numX, numY, id);
+    if (operator === "divide" && numY === 0) {
+      clearCalc();
+      calcDisplay.textContent = "can't divide by zero doofus";
+      return;
+      /* break calculator in half */
+    }
+    let total = operate(numX, numY, operator);
     numX = total;
     calcSavedNum.textContent = numX;
     calcDisplay.textContent = "0";
     numY = null;
-    alert(total);
   }
 }

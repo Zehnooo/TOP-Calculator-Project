@@ -72,14 +72,14 @@ body {
 
 .calc-outer {
   background-color: var(--color-surface);
-  height: 650px;
+  height: 90vh;
   width: 75%;
   border-radius: 12px;
 }
 
 .calc-inner {
   background-color: var(--color-primary);
-  height: 600px;
+  height: 80vh;
   flex-direction: column;
   width: 75%;
   border-radius: 12px;
