@@ -67,9 +67,9 @@ function useButton(btn) {
 function clearCalc() {
   calcDisplay.textContent = "0";
   calcSavedNum.textContent = "";
-  numX;
-  numY;
-  operator;
+  numX = null;
+  numY = null;
+  operator = null;
 }
 
 function getNum(id) {
@@ -84,6 +84,10 @@ function getNum(id) {
   } else {
     // if numX and numY exist
     let total = operate(numX, numY, id);
+    numX = total;
+    calcSavedNum.textContent = numX;
+    calcDisplay.textContent = "0";
+    numY = null;
     alert(total);
   }
 }
