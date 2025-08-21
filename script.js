@@ -57,8 +57,7 @@ function useButton(btn) {
 
       switch (id) {
         case "add":
-          getNum();
-          console.log(numX, numY);
+          getNum(id);
           break;
       }
     }
@@ -73,13 +72,18 @@ function clearCalc() {
   operator;
 }
 
-function getNum() {
+function getNum(id) {
   if (!numX) {
     numX = Number(calcDisplay.textContent);
     calcSavedNum.textContent = numX;
+    calcDisplay.textContent = "";
     return numX;
-  } else {
+  } else if (numX && !numY) {
     numY = Number(calcDisplay.textContent);
     return numY;
+  } else {
+    // if numX and numY exist
+    let total = operate(numX, numY, id);
+    alert(total);
   }
 }
