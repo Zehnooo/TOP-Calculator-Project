@@ -1,6 +1,6 @@
-let numX;
-let numY;
-let operator;
+let numX = null;
+let numY = null;
+let operator = null;
 const validOperators = ["add", "subtract", "multiply", "divide"];
 const validFunctions = ["clear", "pos-neg", "percent", "operate"];
 
@@ -37,29 +37,31 @@ function operate(x, y, op) {
 }
 
 function useButton(btn) {
-  const id = btn.id;
+  let id;
+  btn.id ? (id = btn.id) : (id = null);
   let value;
-  if (id.length === 0) {
+  if (id === null) {
     value = btn.textContent;
     calcDisplay.textContent === "0"
       ? (calcDisplay.textContent = value)
       : (calcDisplay.textContent += value);
-  } else {
-    if (validFunctions.includes(id)) {
-      switch (id) {
-        case "clear":
-          clearCalc();
-          break;
+    return;
+  }
 
-        case "operate":
-          getNum();
-          break;
-      }
+  if (validFunctions.includes(id)) {
+    switch (id) {
+      case "clear":
+        clearCalc();
+        break;
+
+      case "operate":
+        getNum();
+        break;
     }
-    if (validOperators.includes(id)) {
-      operator = id;
-      getNum();
-    }
+  }
+  if (validOperators.includes(id)) {
+    operator = id;
+    getNum();
   }
 }
 
@@ -79,7 +81,7 @@ function getNum() {
     return;
   }
 
-  if (calcDisplay.textContent !== "" && operator) {
+  if (calcDisplay.textContent !== "" && operator && numX != null) {
     numY = Number(calcDisplay.textContent);
     if (operator === "divide" && numY === 0) {
       clearCalc();
