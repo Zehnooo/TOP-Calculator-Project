@@ -26,10 +26,19 @@ function operate(x, y, op) {
 }
 
 function useButton(btn) {
-  value = btn.textContent;
-  btn.id ? alert(btn.id) : alert("no button Id set" + " " + value);
+  const calcDisplay = document.querySelector("#calc-num");
+  const value = btn.textContent;
+  if (isNaN(value)) {
+    const id = btn.id;
+    alert(id);
+  } else {
+    calcDisplay.textContent === "0"
+      ? (calcDisplay.textContent = value)
+      : (calcDisplay.textContent += value);
+  }
 }
 
+// grab calc buttons and add event listener
 const buttonContainer = document.querySelector(".calc-buttons");
 const buttons = buttonContainer.querySelectorAll("button");
 for (const btn of buttons) {
