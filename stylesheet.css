@@ -57,13 +57,17 @@ body {
 
 .calc-outer,
 .calc-inner,
-.calc-header,
-.calc-display {
+.calc-header {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin: 0 auto;
+}
+
+.calc-display {
+  justify-content: space-evenly;
+  display: flex;
 }
 
 .calc-outer {
@@ -125,4 +129,5 @@ body {
 
 #calc-num-saved {
   color: snow;
+  opacity: 75%;
 }
