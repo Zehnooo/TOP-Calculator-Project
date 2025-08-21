@@ -96,6 +96,7 @@ body {
   color: #111;
   text-align: right;
   min-width: 200px;
+  gap: 20px;
 }
 
 .calc-buttons {
@@ -120,4 +121,8 @@ body {
   width: calc(100% - 35px);
   height: 75px;
   border-radius: 8px;
+}
+
+#calc-num-saved {
+  color: snow;
 }
