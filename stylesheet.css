@@ -46,7 +46,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: snow;
-  background-color: var(--color-background);
+  background-color: snow;
 }
 .container {
   max-width: 1250px;
@@ -65,23 +65,18 @@ body {
   margin: 0 auto;
 }
 
-.calc-display {
-  justify-content: space-evenly;
-  display: flex;
-}
-
 .calc-outer {
   background-color: var(--color-surface);
-  height: 90vh;
-  width: 75%;
+  height: 95vh;
+  width: 80vw;
   border-radius: 12px;
 }
 
 .calc-inner {
   background-color: var(--color-primary);
-  height: 80vh;
+  height: auto;
   flex-direction: column;
-  width: 75%;
+  width: 80%;
   border-radius: 12px;
   padding: 20px;
 }
@@ -98,10 +93,19 @@ body {
   font-size: 2rem;
   font-family: monospace;
   color: #111;
-  text-align: right;
-  min-width: 200px;
+  text-align: center;
+  min-width: 50%;
+  align-items: center;
   height: 90%;
-  gap: 20px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.active-calc,
+.prev-equ {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .calc-buttons {
@@ -136,6 +140,9 @@ body {
   transform: scale(95%);
   opacity: 80%;
   border: none;
+}
+.calc-buttons button:active {
+  transform: translateY(10px);
 }
 
 .calc-buttons .equals {
