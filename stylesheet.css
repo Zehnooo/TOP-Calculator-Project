@@ -67,8 +67,8 @@ body {
 
 .calc-outer {
   background-color: var(--color-surface);
-  height: 95vh;
-  width: 80vw;
+  height: 800px;
+  width: 600px;
   border-radius: 12px;
 }
 
@@ -76,7 +76,7 @@ body {
   background-color: var(--color-primary);
   height: auto;
   flex-direction: column;
-  width: 80%;
+  width: min-content;
   border-radius: 12px;
   padding: 20px;
 }
@@ -125,7 +125,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  max-width: 200px;
+  width: 400px;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
 }
