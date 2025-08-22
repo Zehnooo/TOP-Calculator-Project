@@ -114,12 +114,18 @@ body {
 
 .function-btn {
   background-color: var(--color-accent);
+  border: 2px solid snow;
+}
+.value-btn {
+  background-color: snow;
+  color: var(--color-primary);
+  border: 2px solid black;
 }
 .calc-buttons button {
   border-radius: 50%;
   height: 75px;
   width: 75px;
-  border: 2px solid var(--color-highlight);
+
   margin: 3px;
   font-weight: 700;
   font-size: large;
