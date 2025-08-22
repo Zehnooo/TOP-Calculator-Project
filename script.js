@@ -6,6 +6,7 @@ const validFunctions = ["clear", "pos-neg", "percent", "operate"];
 
 const calcDisplay = document.querySelector("#calc-num");
 const calcSavedNum = document.querySelector("#calc-num-saved");
+const prevCalcDisplay = document.querySelector("#prev-calc");
 // grab calc buttons and add event listener
 const buttonContainer = document.querySelector(".calc-buttons");
 const buttons = buttonContainer.querySelectorAll("button");
@@ -30,6 +31,13 @@ const operations = {
     return x / y;
   },
 };
+
+const operationSigns = new Map([
+  ["add", "+"],
+  ["subtract", "-"],
+  ["multiply", "*"],
+  ["divide", "/"],
+]);
 
 function operate(x, y, op) {
   let operation = operations[op];
@@ -59,8 +67,11 @@ function useButton(btn) {
         break;
 
       case "pos-neg":
-        flipValue();
+        updateValue(id);
         break;
+
+      case "percent":
+        updateValue(id);
     }
   }
   if (validOperators.includes(id)) {
@@ -72,6 +83,7 @@ function useButton(btn) {
 function clearCalc() {
   calcDisplay.textContent = "0";
   calcSavedNum.textContent = "";
+  prevCalcDisplay.textContent = "";
   numX = null;
   numY = null;
   operator = null;
@@ -94,6 +106,10 @@ function getNum() {
       /* break calculator in half */
     }
     let total = operate(numX, numY, operator);
+    prevCalcDisplay.textContent = `${numX} ${operationSigns.get(
+      operator
+    )} ${numY} = `;
+
     numX = total;
     calcSavedNum.textContent = numX;
     calcDisplay.textContent = "0";
@@ -101,8 +117,15 @@ function getNum() {
   }
 }
 
-function flipValue() {
+function updateValue(id) {
   let origValue = Number(calcDisplay.textContent);
-  let newValue = origValue * -1;
-  calcDisplay.textContent = newValue;
+  let newValue = null;
+  if (id === "pos-neg") {
+    newValue = origValue * -1;
+    calcDisplay.textContent = newValue;
+  }
+  if (id === "percent") {
+    newValue = origValue / 100;
+    calcDisplay.textContent = newValue;
+  }
 }
