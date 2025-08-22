@@ -95,7 +95,7 @@ body {
   text-align: center;
   min-width: 50%;
   align-items: center;
-  height: 90%;
+  height: 100%;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -121,10 +121,13 @@ body {
 
 .calc-buttons {
   display: grid;
-  width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 200px;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
-  padding: 20px;
 }
 
 .function-btn {
@@ -133,14 +136,14 @@ body {
 }
 .value-btn {
   background-color: snow;
-  color: var(--color-primary);
+
   border: 2px solid black;
 }
 .calc-buttons button {
   border-radius: 50%;
   height: 75px;
   width: 75px;
-
+  color: var(--color-primary);
   margin: 3px;
   font-weight: 700;
   font-size: large;
@@ -153,12 +156,12 @@ body {
   border: none;
 }
 .calc-buttons button:active {
-  transform: translateY(10px);
+  transform: translateY(5px);
 }
 
 .calc-buttons .equals {
   grid-column: 3 / -1;
-  width: calc(100% - 35px);
+  width: calc(100% - 10px);
   height: 75px;
   border-radius: 8px;
 }
