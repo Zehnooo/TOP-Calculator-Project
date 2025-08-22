@@ -57,6 +57,10 @@ function useButton(btn) {
       case "operate":
         getNum();
         break;
+
+      case "pos-neg":
+        flipValue();
+        break;
     }
   }
   if (validOperators.includes(id)) {
@@ -95,4 +99,10 @@ function getNum() {
     calcDisplay.textContent = "0";
     numY = null;
   }
+}
+
+function flipValue() {
+  let origValue = Number(calcDisplay.textContent);
+  let newValue = origValue * -1;
+  calcDisplay.textContent = newValue;
 }
