@@ -1,6 +1,7 @@
 let numX = null;
 let numY = null;
 let operator = null;
+let nextOperator = null;
 const validOperators = ["add", "subtract", "multiply", "divide"];
 const validFunctions = ["clear", "pos-neg", "percent", "operate"];
 
@@ -53,6 +54,7 @@ function useButton(btn) {
     calcDisplay.textContent === "0"
       ? (calcDisplay.textContent = value)
       : (calcDisplay.textContent += value);
+
     return;
   }
 
@@ -75,8 +77,13 @@ function useButton(btn) {
     }
   }
   if (validOperators.includes(id)) {
-    operator = id;
-    getNum();
+    if (operator) {
+      nextOperator = id;
+      getNum();
+    } else {
+      operator = id;
+      getNum();
+    }
   }
 }
 
@@ -113,6 +120,7 @@ function getNum() {
     numX = total;
     calcSavedNum.textContent = numX;
     calcDisplay.textContent = "0";
+    operator = null;
     numY = null;
   }
 }
