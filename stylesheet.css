@@ -89,10 +89,9 @@ body {
   background: rgba(255, 255, 255, 0.082);
   margin: 20px 0;
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 20px;
   font-size: 2rem;
   font-family: monospace;
-  color: #111;
   text-align: center;
   min-width: 50%;
   align-items: center;
@@ -100,12 +99,24 @@ body {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  gap: 20px 0px;
 }
-.active-calc,
-.prev-equ {
+.active-calc {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+}
+
+.prev-equ {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.prev-equ p {
+  text-align: right;
+  color: var(--color-accent);
+  font-size: 18px;
 }
 
 .calc-buttons {
@@ -150,6 +161,10 @@ body {
   width: calc(100% - 35px);
   height: 75px;
   border-radius: 8px;
+}
+
+#calc-num {
+  color: snow;
 }
 
 #calc-num-saved {

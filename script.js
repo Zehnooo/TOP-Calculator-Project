@@ -1,7 +1,6 @@
 let numX = null;
 let numY = null;
 let operator = null;
-let nextOperator = null;
 const validOperators = ["add", "subtract", "multiply", "divide"];
 const validFunctions = ["clear", "pos-neg", "percent", "operate"];
 
@@ -77,13 +76,8 @@ function useButton(btn) {
     }
   }
   if (validOperators.includes(id)) {
-    if (operator) {
-      nextOperator = id;
-      getNum();
-    } else {
-      operator = id;
-      getNum();
-    }
+    operator = id;
+    getNum();
   }
 }
 
