@@ -49,6 +49,10 @@ body {
   background-image: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
 }
 
+.legend {
+  position: absolute;
+}
+
 .container {
   max-width: 1250px;
   margin: 0 auto;
