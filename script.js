@@ -7,6 +7,7 @@ const validFunctions = ["clear", "pos-neg", "percent", "operate", "backspace"];
 
 const calcDisplay = document.querySelector("#calc-num");
 const calcSavedNum = document.querySelector("#calc-num-saved");
+const calcOperator = document.querySelector("#calc-operator");
 const prevCalcDisplay = document.querySelector("#prev-calc");
 // grab calc buttons and add event listener
 const buttonContainer = document.querySelector(".calc-buttons");
@@ -95,6 +96,7 @@ function useButton(btn) {
   if (validOperators.includes(id)) {
     getNum();
     operator = id;
+    calcOperator.textContent = operationSigns.get(operator);
   }
 }
 
@@ -102,6 +104,7 @@ function clearCalc() {
   calcDisplay.textContent = "0";
   calcSavedNum.textContent = "";
   prevCalcDisplay.textContent = "";
+  calcOperator.textContent = "";
   numX = null;
   numY = null;
   operator = null;
@@ -147,6 +150,7 @@ function getNum() {
     operator = null;
     numY = null;
   }
+  calcOperator.textContent = "";
   enableButtons(disabledButtons);
 }
 
