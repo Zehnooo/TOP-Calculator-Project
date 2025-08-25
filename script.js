@@ -180,7 +180,7 @@ function enableButtons(arr) {
 document.addEventListener("keydown", (e) => {
   const key = e.key;
   const code = e.code;
-  console.log(key, code);
+
   const str = calcDisplay.textContent;
   const value = key.valueOf();
 
