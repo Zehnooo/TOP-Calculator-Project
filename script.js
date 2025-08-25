@@ -51,6 +51,10 @@ function useButton(btn) {
   btn.id ? (id = btn.id) : (id = null);
   let value;
   if (id === null || id === "decimal") {
+    if (id === "decimal") {
+      btn.disabled = true;
+      disabledButtons.push(btn);
+    }
     value = btn.textContent;
     if (id === "decimal") {
       btn.disabled = true;
@@ -172,3 +176,41 @@ function enableButtons(arr) {
     btn.disabled = false;
   }
 }
+
+document.addEventListener("keydown", (e) => {
+  const key = e.key;
+  const code = e.code;
+  console.log(key, code);
+  const str = calcDisplay.textContent;
+  const value = key.valueOf();
+
+  if (value >= 0 || value <= 9) {
+    calcDisplay.textContent === "0"
+      ? (calcDisplay.textContent = value)
+      : (calcDisplay.textContent += value);
+    return;
+  }
+
+  const keyToOperation = {
+    "+": "add",
+    "-": "subtract",
+    "*": "multiply",
+    "/": "divide",
+    Enter: "operate",
+    "=": "operate",
+    Backspace: "backspace",
+    Escape: "clear",
+    ".": "decimal",
+  };
+
+  if (str.includes(".")) {
+    if (code === "NumpadDecimal" || code === "Period") {
+      return false;
+    }
+  }
+
+  if (keyToOperation[key]) {
+    const btn = document.querySelector(`#${keyToOperation[key]}`);
+    if (btn) useButton(btn);
+  }
+});
