@@ -75,6 +75,7 @@ body {
   min-width: 600px;
   padding: 15px;
   border-radius: 12px;
+  border: 1px solid var(--color-accent);
 }
 
 .calc-inner {
