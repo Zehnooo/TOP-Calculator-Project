@@ -122,6 +122,7 @@ function getNum() {
     if (operator === "divide" && numY === 0) {
       clearCalc();
       calcDisplay.textContent = "can't divide by zero doofus";
+
       for (const btn of buttons) {
         btn.classList.add("flicker");
         setTimeout(() => {
