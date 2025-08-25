@@ -198,7 +198,10 @@ body {
 
 #calc-num-saved {
   color: snow;
-  opacity: 75%;
+}
+
+#calc-operator {
+  color: var(--color-highlight);
 }
 
 .flicker {
