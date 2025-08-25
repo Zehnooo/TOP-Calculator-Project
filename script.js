@@ -1,8 +1,9 @@
 let numX = null;
 let numY = null;
 let operator = null;
+let disabledButtons = [];
 const validOperators = ["add", "subtract", "multiply", "divide"];
-const validFunctions = ["clear", "pos-neg", "percent", "operate"];
+const validFunctions = ["clear", "pos-neg", "percent", "operate", "backspace"];
 
 const calcDisplay = document.querySelector("#calc-num");
 const calcSavedNum = document.querySelector("#calc-num-saved");
@@ -48,8 +49,12 @@ function useButton(btn) {
   let id;
   btn.id ? (id = btn.id) : (id = null);
   let value;
-  if (id === null) {
+  if (id === null || id === "decimal") {
     value = btn.textContent;
+    if (id === "decimal") {
+      btn.disabled = true;
+      disabledButtons.push(btn);
+    }
     calcDisplay.textContent === "0"
       ? (calcDisplay.textContent = value)
       : (calcDisplay.textContent += value);
@@ -73,11 +78,23 @@ function useButton(btn) {
 
       case "percent":
         updateValue(id);
+        break;
+
+      case "backspace":
+        str = calcDisplay.textContent;
+        str = str.slice(0, -1);
+        if (!str.includes(".")) {
+          enableButtons(disabledButtons);
+        }
+        str.length === 0
+          ? (calcDisplay.textContent = "0")
+          : (calcDisplay.textContent = str);
+        break;
     }
   }
   if (validOperators.includes(id)) {
-    operator = id;
     getNum();
+    operator = id;
   }
 }
 
@@ -88,6 +105,7 @@ function clearCalc() {
   numX = null;
   numY = null;
   operator = null;
+  enableButtons(disabledButtons);
 }
 
 function getNum() {
@@ -95,6 +113,7 @@ function getNum() {
     numX = Number(calcDisplay.textContent);
     calcSavedNum.textContent = numX;
     calcDisplay.textContent = "";
+    enableButtons(disabledButtons);
     return;
   }
 
@@ -103,6 +122,7 @@ function getNum() {
     if (operator === "divide" && numY === 0) {
       clearCalc();
       calcDisplay.textContent = "can't divide by zero doofus";
+      enableButtons(disabledButtons);
       return;
       /* break calculator in half */
     }
@@ -117,6 +137,7 @@ function getNum() {
     operator = null;
     numY = null;
   }
+  enableButtons(disabledButtons);
 }
 
 function updateValue(id) {
@@ -129,5 +150,11 @@ function updateValue(id) {
   if (id === "percent") {
     newValue = origValue / 100;
     calcDisplay.textContent = newValue;
+  }
+}
+
+function enableButtons(arr) {
+  for (const btn of arr) {
+    btn.disabled = false;
   }
 }
