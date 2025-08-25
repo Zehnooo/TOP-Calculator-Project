@@ -51,6 +51,20 @@ body {
 
 .legend {
   position: absolute;
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 10px;
+  text-align: center;
+  margin-top: -150px;
+}
+.legend table {
+  border: 2px solid var(--color-accent);
+}
+.legend th,
+.legend td {
+  border: 1px dashed var(--color-highlight);
+  padding: 10px;
 }
 
 .container {
