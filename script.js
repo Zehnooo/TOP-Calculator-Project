@@ -201,6 +201,7 @@ document.addEventListener("keydown", (e) => {
     Backspace: "backspace",
     Escape: "clear",
     ".": "decimal",
+    "%": "percent",
   };
 
   if (str.includes(".")) {
