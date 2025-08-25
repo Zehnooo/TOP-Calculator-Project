@@ -131,7 +131,7 @@ function getNum() {
       operator
     )} ${numY} = `;
 
-    numX = total;
+    numX = parseFloat(total.toFixed(8));
     calcSavedNum.textContent = numX;
     calcDisplay.textContent = "0";
     operator = null;
